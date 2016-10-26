@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Color Guessing Game</title>
+    <script>
+        var colors =["blue","cyan","gold","gray","green","magneta","orange","red","white","yellow","black","pink","purple","aqua"];
+        var target;
+        var success = false;
+        var userChoice;
+        var guesses = 0;
+
+        function do_game() {
+            var randomNumber = Math.random()*colors.length;
+            var randomNumberInteger = Math.floor(randomNumber);
+            target = colors[randomNumberInteger];
+            alert("Target is: " + target);
+            while(!success){
+                var userChoice = prompt("I am thinking of one of these colors:\n\n" + colors.sort() +"\n"+
+                        "What color am I thinking of?");
+                guesses += 1;
+                success = check_guess();
+            }
+            function check_guess(){
+               var presence = colors.indexOf(userChoice);
+               if(presence == -1){
+                   alert("I don't recognize that color!\n\n" +
+                   "Please choose colors from the choices given!");
+                   return false;
+               }
+               if(userChoice > target){
+                   alert("Your choice is alphabetically higher than mine");
+                   return false;
+               }
+               if(userChoice < target){
+                   alert("Your choice is alphabetically Lower than mine");
+                   return false;
+               }
+               alert("You got it!. The color is " + target +". It took you " + guesses + " guesses to match the choice of" +
+                       "AI choice. Well done!");
+                return true;
+            }
+            myBody = document.getElementsByTagName("body")[0];
+            myBody.style.background = target;
+
+        }
+    </script>
+</head>
+<body onload="do_game()">
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Color Guessing Game</title>
+    <script>
+        var colors =["blue","cyan","gold","gray","green","magneta","orange","red","white","yellow","black","pink","purple","aqua"];
+        var target;
+        var success = false;
+
+        function do_game() {
+            var randomNumber = Math.random()*colors.length;
+            var randomNumberInteger = Math.floor(randomNumber);
+            target = colors[randomNumberInteger];
+            alert("Target is: " + target);
+            while(!success){
+                var userChoice = prompt("I am thinking of one of these colors:\n\n" +
+                        "blue,cyan,gold,gray,green,magneta,orange,red,white,yellow,black,pink,purple\n\n" +
+                        "What color am I thinking of?");
+                if(userChoice == target){
+                    success = true;
+                }
+            }
+
+        }
+        do_game();
+    </script>
+</head>
+<body>
+        <p>Part one is done now !</p>
+</body>
+</html>
